@@ -1,0 +1,5 @@
+/bin/
+/.settings/
+/.classpath
+/lib/NLPHub-latest.jar
+/lib/stanford-corenlp-3.6.0-models.jar
