@@ -1,0 +1,133 @@
+## 4. 영어 전처리
+
+### 4-1 Preprocessing 과정 소개
+
++ Processiong Process
+
+  1. 문헌집단
+  2. 전처리
+  3. 분석 후보 생성
+  4. 결합 제약 조사
+  5. 분석 후보 선택
+  6. 후처리
++ 기존 연구의 전처리 과정
+  + 언어 감별 (Language detection)
+  + 불용어 제거 (Stopword removal)
+  + 원형 복원 (Lemmatization)
+  + 어휘 통제 (Voceb Control)
++ 전처리 단계 : 문장으로 부터 단어를 추출하고 문장부호를 분리하며 숫자나 특수 문자열 처리를 수행
++ 전처리 단계의 세부 요소
+  + Normalization : 단어 통일화
+  + Tokenization : 단어로 분리
+  + Stemming : 어근 추출
+  + Lemmatization : 원형 복원
+  + Stopword removal : 불용어 제거
+
+
+### 4-2 Preprocessing 과정 : Nomalization 
+
++ 텍스트와 쿼리를 모두 동일한 형식으로 정규화 하는 과정
++ 용어의 동치관계(equivalence class)를 정의함
++ 예시
+  + windo**w** -> windo**w**, windo**ws**
+  + **w**indows -> **W**indows, **w**indows
+  + Windows (no expansion) **고유명사에 주의**
+
+### 4-3 Preprocessing 과정 : Tokenization 
+
++ 텍스트가 토큰 단위로 자동으로 나누어지는 처리 단계
++ Tokenization 문제
+  + 문장 경계
+    + 문장 부호 ex) 문장 주위의 인용 부호 "의 용도
+    + 문장 범위 ex) 문장의 끝
+  + 적절한 이름
+    + Ex) "California Governor Arnold Schwarzenegger"인 경우 어떻게 처리해야 하는가?
+  + 축약형
+    + ex) That'**s** Fred'**s** jacket'**s** pocket.
+    + ex) I'm doing what you're saying "Don't do!".
+
+### 4-4 Preprocessing 과정 :  lemmatization
+
++ 한 단어가 여러가지 형식으로 표현되어 있는 것을 하나의 단일 형식을로 묶어주는 기법 (Manning and Schuze, 1999 )
+
++ 어간 추출의 단점인 단어의 의미적 단위(semantic unit)를 고려하지 않음
+
++ 기계적으로 경험적 법칙(heuristic rules)에 의해 결정되지 않음
+
++ 자연어 처리 기법의 근간이 되는 형태소 분석을 통해서 함
+
++ 더 정확한 단어 수준 분석을 수행할 수 있음
+
++ 굴절 형태론 (Inflenctional morphology)
+
+  + cutting -> cut
+
++ 파생 형태론 (derivational morphology)
+
+  + destruction -> destroy 
+
++ 예시
+
+  + am, are, is -> be
+
+  + car, cars, car's, cars' -> car
+
+  + the boy's cars are different colors ->
+
+    the boy car be different color
+
+### 4-5 Preprocessing 과정 :  stemming 
+
++ 변형된 형태중에서 단어의 근간이 되는 어근만 남겨놓고 나머지를 제거하는 과정
++ 단어의 형태 변화에 따라 같은 단어라도 다른 단어인 것처럼 취급되는 문제가 있음
++ 이를 해결하기 위해 다음의 두 가지 방법이 주로 사용됨
+  + Stemming(어간 추출)
+  + lemmatization(원형 복원)
++ 목적
+  + 어근과 차이가 있더라도 관련이 있는 단어들이 일정하게 동일한 어간으로 매핑되게 함
++ 예시
+  + **automat**e, **automat**ic, **automat**ion -> automat 
++ 포터 어간 추출 알고리즘
+  + 영어 전처리 과정에서 쓰이는 대표적인 알고리즘
+  + http://www.tartarus.org/~martin/PoterStemmer/
+  + Convention + reduction의 5단계
+  + 각 단계는 command를 받아 순차적으로 진행됨
+    + Replacement -> replac
+    + cement -> cement
++ 포터 어간 추출 알고리즘에서 이용되는 규칙
+  + ATIONAL -> ATE
+  + TIONAL -> TION
+  + ENCI -> ENCE
+  + ANCI -> ANCE
+  + IZER -> IZE
+  + ABLI -> ABLE
+  + ALLI -> AL
+  + OUSLI -> OUS
+  + relational -> relate
+  + conditional -> codition
+  + valenci -> valence
+  + hesitanci -> hesitance
+  + digitizer -> digitize
+  + conformabli -> conformable
+  + radicalli -> radical
+  + analogousli -> analogous
+  + etc
++ 퍼포먼스에 악영향을 줄 수 있음
++ stemming이 유용하게 쓰일 때
+  + [tartan **sweaters**] - {sweater, sweaters}
+  + [sightseeing **tour** san francisco] - {tour, tours}
++ stemming이 유용하게 쓰이지 못할 때
+  + [operational AND research]
+  + [operating AND system]
+  + [operative AND dentistry] 
+  + 모두 같은 어간인 'oper'를써 의미가 모호해짐
+
+### 4-6 Preprocessing 과정 :  stopword removal 
+
++ 불용어
+  + 정보를 전달하지 않는 단어
+  + 텍스트 분석을 할 때 더 나은 결과를 내기 위해 불용어를 삭제함
+  + 예시
+    + 영어 : the, a등의 관사, of, in, to 등의 전치사
+
+### 4-7 영어 전처리 실습
