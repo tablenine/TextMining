@@ -55,13 +55,13 @@ public class SimpleCooccurrenceManager {
 	
 		String morphData = "";
 		String stopword = "";
-		if (System.getProperty("os.name").startsWith("Windows")) {
+		//if (System.getProperty("os.name").startsWith("Windows")) {
 			morphData = "datas/";
 			stopword = "data/util/stopwords.txt";
-		} else {
+		/*} else {
 			morphData = "/home/tsmm/yTextMiner/datas/";
 			stopword = "/home/tsmm/yTextMiner/data/util/stopwords.txt";
-		}
+		}*/
 			
 		Pipeline pipe = null;
 		if (mode.equals("en")) {
@@ -120,7 +120,7 @@ public class SimpleCooccurrenceManager {
 	
 	public static void main(String[] args) throws Exception
 	{
-		String inputFile = "temp.txt";
+		String inputFile = "data/corpus/sample_text.txt";
 		SimpleCooccurrenceManager cooccurrence = new SimpleCooccurrenceManager();
 		cooccurrence.computeCooccurrence(inputFile);
 	}

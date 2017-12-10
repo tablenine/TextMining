@@ -159,13 +159,13 @@ public class VectorSpaceModelManager {
 		
 		String morphData = "";
 		String stopword = "";
-		if (System.getProperty("os.name").startsWith("Windows")) {
+		//if (System.getProperty("os.name").startsWith("Windows")) {
 			morphData = "datas/";
 			stopword = "data/util/stopwords.txt";
-		} else {
+		/*} else {
 			morphData = "/home/tsmm/yTextMiner/datas/";
 			stopword = "/home/tsmm/yTextMiner/data/util/stopwords.txt";
-		}
+		}*/
 
 		Pipeline pipe = new KoreanPipeline(morphData,stopword);
 				
