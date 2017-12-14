@@ -43,13 +43,13 @@ public class LDAMain {
 		boolean isKomoran = true;
 		String morphData = "";
 		String stopword = "";
-		if (System.getProperty("os.name").startsWith("Windows")) {
+		//if (System.getProperty("os.name").startsWith("Windows")) {
 			morphData = "datas/";
 			stopword = "data/util/stopwords.txt";
-		} else {
-			morphData = "/home/tsmm/yTextMiner/datas/";
-			stopword = "/home/tsmm/yTextMiner/data/util/stopwords.txt";
-		}
+//		} else {
+//			morphData = "/home/tsmm/yTextMiner/datas/";
+//			stopword = "/home/tsmm/yTextMiner/data/util/stopwords.txt";
+//		}
 			
 		Pipeline pipe = null;
 		if (mode.equals("en")) {
